@@ -1,14 +1,17 @@
-prefix := /usr/local
-exec_prefix := $(prefix)
-libdir := $(exec_prefix)/lib
-pamdir := $(libdir)/security
+prefix ?= /usr/local
+exec_prefix ?= $(prefix)
+libdir ?= $(exec_prefix)/lib
+pamdir ?= $(libdir)/security
 
 INSTALL ?= install
+
+CFLAGS += -fPIC
+LDFLAGS += -shared
 
 all: pam_write_timestamp.so
 
 pam_write_timestamp.so: pam_write_timestamp.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DPAM_DIRECTORY="\"$(pamdir)\"" -fPIC -shared $^ -lpam -ldl -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $^ "$(pamdir)/pam_timestamp.so" -o $@
 
 install: all
 	$(INSTALL) -d -m 755 "$(DESTDIR)$(pamdir)"

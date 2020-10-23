@@ -1,3 +1,9 @@
+libpam-write-timestamp (0.2) unstable; urgency=medium
+
+  * Scrap dlopen/dlsym and just link to pam_timestamp.so.
+
+ -- Victor Westerhuis <victor@westerhu.is>  Fri, 23 Oct 2020 22:24:08 +0200
+
 libpam-write-timestamp (0.1) unstable; urgency=medium
 
   * Initial release.

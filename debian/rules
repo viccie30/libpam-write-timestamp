@@ -5,11 +5,10 @@ include /usr/share/dpkg/buildtools.mk
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
+export pamdir=/lib/$(DEB_HOST_MULTIARCH)/security
+
 %:
 	dh $@
 
-override_dh_auto_build:
-	dh_auto_build -- pamdir=/lib/$(DEB_HOST_MULTIARCH)/security
-
-override_dh_auto_install:
-	dh_auto_install -- pamdir=/lib/$(DEB_HOST_MULTIARCH)/security
+override_dh_makeshlibs:
+override_dh_shlibdeps:
