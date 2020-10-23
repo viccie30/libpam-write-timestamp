@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+DPKG_EXPORT_BUILDTOOLS := 1
+include /usr/share/dpkg/buildtools.mk
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- pamdir=/lib/$(DEB_HOST_MULTIARCH)/security
+
+override_dh_auto_install:
+	dh_auto_install -- pamdir=/lib/$(DEB_HOST_MULTIARCH)/security

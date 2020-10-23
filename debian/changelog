@@ -1,0 +1,5 @@
+libpam-write-timestamp (0.1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Victor Westerhuis <victor@westerhu.is>  Fri, 23 Oct 2020 16:46:30 +0200

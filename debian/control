@@ -1,0 +1,21 @@
+Source: libpam-write-timestamp
+Section: admin
+Priority: optional
+Maintainer: Victor Westerhuis <victor@westerhu.is>
+Build-Depends: debhelper-compat (= 13), libpam-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/viccie30/libpam-write-timestamp
+Vcs-Browser: https://github.com/viccie30/libpam-write-timestamp
+Vcs-Git: https://github.com/viccie30/libpam-write-timestamp.git
+Rules-Requires-Root: no
+
+Package: libpam-write-timestamp
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Write PAM timestamps during authentication phase
+ pam_timestamp.so (included in the default distribution) can use timestamps to
+ avoid having to type a password when authenticating in quick succession. This
+ only works when the PAM application opens a session, because that is when the
+ timestamp is written. This small PAM plugin calls that function during the
+ authentication phase, to help such programs.
